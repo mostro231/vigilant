@@ -22,6 +22,11 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
+$app->get('/monitor', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('monitor.twig');
+});
+
 $app->get('/almacenar/{consumo}/{temperatura}/{apertura}', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return "ok";
