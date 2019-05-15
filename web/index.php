@@ -43,15 +43,8 @@ $app->get('/almacenar/{consumo}/{temperatura}/{apertura}', function() use($app) 
   $resultado=pg_insert ($dbconexion,"medicion_test",$registro);
   return $resultado;
 
-
   return "ok";
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
->>>>>>> parent of 62b6005... Merge branch 'master' of https://github.com/mostro231/vigilant
-=======
->>>>>>> parent of 9495516... Resincronizacion
 });
 
 $app->run();
