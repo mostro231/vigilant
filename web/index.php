@@ -22,6 +22,7 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
+<<<<<<< HEAD
 $app->get('/monitor', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('monitor.twig');
@@ -46,6 +47,11 @@ $app->get('/almacenar/{consumo}/{temperatura}/{apertura}', function() use($app) 
 
   return "ok";
 
+=======
+$app->get('/alert', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('alert.twig');
+>>>>>>> parent of 67ea101... logo
 });
 
 $app->run();
