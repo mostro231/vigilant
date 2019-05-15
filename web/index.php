@@ -26,6 +26,7 @@ $app->get('/', function() use($app) {
 $app->get('/alert', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('alert.twig');
+});
 
 $app->get('/monitor', function() use($app) {
   $app['monolog']->addDebug('logging output.');
