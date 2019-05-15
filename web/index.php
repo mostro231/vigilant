@@ -45,7 +45,10 @@ $app->get('/almacenar/{consumo}/{temperatura}/{apertura}', function() use($app) 
 
 
   return "ok";
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 62b6005... Merge branch 'master' of https://github.com/mostro231/vigilant
 });
 
 $app->run();
