@@ -22,9 +22,20 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.twig');
 });
 
+<<<<<<< HEAD
 $app->get('/alert', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return $app['twig']->render('alert.twig');
+=======
+$app->get('/monitor', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return $app['twig']->render('monitor.twig');
+});
+
+$app->get('/almacenar/{consumo}/{temperatura}/{apertura}', function() use($app) {
+  $app['monolog']->addDebug('logging output.');
+  return "ok";
+>>>>>>> 466ef0529b6496bcb6964fc976dc7b80cd5d57ca
 });
 
 $app->run();
