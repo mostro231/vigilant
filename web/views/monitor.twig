@@ -94,12 +94,14 @@
 
         </tr>
         <tr>
-          <th></th>
         </tr>
         
-        <tr>
+        
        <th>Temperatura</th>
-        </tr>
+        <tr>
+          <canvas data-type="radial-gauge"></canvas></tr>
+
+
          </table>
 
       </ul>
@@ -121,5 +123,11 @@
     </a>
 
 </div>
+
+<script>
+  <canvas data-type="radial-gauge"></canvas>var gauge = new RadialGauge({
+    renderTo: 'canvas-id'
+  }).draw();
+</script>
 
 {% endblock %}
