@@ -433,8 +433,8 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 
 // Create chart instance
-var chartConsumo = am4core.create("chartdivLinea", am4charts.XYChart);
-chartLinea.paddingRight = 20;
+var chartConsumo = am4core.create("chartdivConsumo", am4charts.XYChart);
+chartConsumo.paddingRight = 20;
 
 // Add data
 chartConsumo.data = [{
@@ -576,33 +576,6 @@ chartConsumo.data = [{
   "year": "1995",
   "value": 0.269
 }, {
-  "year": "1996",
-  "value": 0.141
-}, {
-  "year": "1997",
-  "value": 0.353
-}, {
-  "year": "1998",
-  "value": 0.548
-}, {
-  "year": "1999",
-  "value": 0.298
-}, {
-  "year": "2000",
-  "value": 0.267
-}, {
-  "year": "2001",
-  "value": 0.411
-}, {
-  "year": "2002",
-  "value": 0.462
-}, {
-  "year": "2003",
-  "value": 0.47
-}, {
-  "year": "2004",
-  "value": 0.445
-}, {
   "year": "2005",
   "value": 0.47
 }];
@@ -617,7 +590,7 @@ categoryAxis.endLocation = 0.5;
 
 // Pre zoom
 chartConsumo.events.on("datavalidated", function () {
-  categoryAxis.zoomToIndexes(Math.round(chartLinea.data.length * 0.4), Math.round(chartLinea.data.length * 0.55));
+  categoryAxis.zoomToIndexes(Math.round(chartConsumo.data.length * 0.4), Math.round(chartConsumo.data.length * 0.55));
 });
 
 // Create value axis
@@ -640,7 +613,7 @@ range.contents.fill = range.contents.stroke;
 // Add scrollbar
 var scrollbarX = new am4charts.XYChartScrollbar();
 scrollbarX.series.push(series);
-chartLinea.scrollbarX = scrollbarX;
+chartConsumo.scrollbarX = scrollbarX;
 
 chartConsumo.cursor = new am4charts.XYCursor();
 
