@@ -71,13 +71,11 @@
           <style>
           #chartdiv {
             width: 100%;
-
-            height: 100px;
+            height: 250px;
           }
 
           #chartdivLinea {
             width: 100%;
-
             height: 250px;
           }
 
@@ -92,15 +90,48 @@
           <td> <div id="chartdivLinea"></div>  </td>
 
           <td>
-            <h3>promedios T</h3>
+            <h3>Promedio Temperatura</h3>
+            <br>
+            <br>
+            <h4>20ºC</h4>
           </td>
         </tr>
 
         <tr>
           <td colspan="2"> <div id="chartdivConsumo"></div> </td>
           <td>
-            <h3>promedios Consumo</h3>
+            <h3>Promedio Consumo</h3>
+            <br>
+            <br>
+            <h4>5 Kw/h</h4>
           </td>
+        </tr>
+
+
+         </table>
+
+
+         <h2><b>LOG DE APERTURA</b></h2>
+
+        <table style="width:70%" border="1" align="center">
+        
+        <tr>
+          <th> Fecha y Hora</th>
+
+          <th> Acción </th>
+        </tr>
+
+        <tr>
+          <td> 22 de mayo de 2019, 20:20 </td>
+          <td> APERTURA  </td>
+        </tr>
+        <tr>
+          <td> 22 de mayo de 2019, 20:20 </td>
+          <td> APERTURA  </td>
+        </tr>
+        <tr>
+          <td> 22 de mayo de 2019, 20:20 </td>
+          <td> APERTURA  </td>
         </tr>
 
 
@@ -143,7 +174,7 @@ chart.innerRadius = -25;
 
 var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = 0;
-axis.max = 100;
+axis.max = 120;
 axis.strictMinMax = true;
 axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
 axis.renderer.grid.template.strokeOpacity = 0.3;
@@ -166,7 +197,7 @@ range1.axisFill.zIndex = -1;
 
 var range2 = axis.axisRanges.create();
 range2.value = 80;
-range2.endValue = 100;
+range2.endValue = 120;
 range2.axisFill.fillOpacity = 1;
 range2.axisFill.fill = colorSet.getIndex(4);
 range2.axisFill.zIndex = -1;
