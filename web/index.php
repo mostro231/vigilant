@@ -51,4 +51,25 @@ $app->get('/registrarlog/{apertura}', function($apertura) use($app) {
   return $resultado;
 });
 
+$app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) use($app){
+  $app['monolog']->addDebug('logging output.');
+
+  $dbconexion=pg_connect( "host=ec2-54-221-198-156.compute-1.amazonaws.com port=5432 dbname=daclr0pc5h658k user=kzlmednsrgkxpn password=e98f8854ed2ce71f7f34dae87b70a63675e41c8e6ba689aae13927da6a974232");
+  $consult_db = pg_query($dbconn, 'SELECT * FROM public."monitor" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
+  
+  $resultArray = array();
+  while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
+    $resultArray[] = $row;
+  }
+
+  $jsonResult = json_encode($resultArray, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+
+  $response = new Response();
+  $response->setContent($jsonResult);
+  $response->setCharset('UTF-8');
+  $response->headers->set('Content-Type', 'application/json');
+
+  return $response;
+});
+
 $app->run();
