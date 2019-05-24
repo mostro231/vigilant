@@ -40,4 +40,15 @@ $app->get('/almacenar/{consumo}/{temperatura}', function($consumo, $temperatura)
   return $resultado;
 });
 
+$app->get('/registrarlog/{apertura}', function($apertura) use($app) {
+  $app['monolog']->addDebug('logging output.');
+
+  $dbconexion=pg_connect( "host=ec2-54-221-198-156.compute-1.amazonaws.com port=5432 dbname=daclr0pc5h658k user=kzlmednsrgkxpn password=e98f8854ed2ce71f7f34dae87b70a63675e41c8e6ba689aae13927da6a974232");
+  $registro=array(
+    "fecha"=>date('Y-m-d H:i:s'),
+    "estado"=>$apertura);
+  $resultado=pg_insert ($dbconexion,"monitor_apertura",$registro);
+  return $resultado;
+});
+
 $app->run();

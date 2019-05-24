@@ -209,10 +209,8 @@ var hand = chart.hands.push(new am4charts.ClockHand());
 // using chart.setTimeout method as the timeout will be disposed together with a chart
 chart.setTimeout(randomValue, 2000);
 
-function randomValue() {
-    hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
-    chart.setTimeout(randomValue, 2000);
-}
+hand.showValue(45, 1000, am4core.ease.cubicOut);
+
 
 }); // end am4core.ready()
 </script>
