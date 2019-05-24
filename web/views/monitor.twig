@@ -180,6 +180,7 @@ axis.max = 120;
 axis.strictMinMax = true;
 axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
 axis.renderer.grid.template.strokeOpacity = 0.3;
+axis.gridCount=24;
 
 var colorSet = new am4core.ColorSet();
 
@@ -206,7 +207,7 @@ range2.axisFill.zIndex = -1;
 
 var hand = chart.hands.push(new am4charts.ClockHand());
 
-chart.setValue(45);
+hand.setValue(45);
 }); // end am4core.ready()
 </script>
 
