@@ -57,6 +57,8 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
   $dbconexion=pg_connect( "host=ec2-54-221-198-156.compute-1.amazonaws.com port=5432 dbname=daclr0pc5h658k user=kzlmednsrgkxpn password=e98f8854ed2ce71f7f34dae87b70a63675e41c8e6ba689aae13927da6a974232");
   $consult_db = pg_query($dbconexion, 'SELECT * FROM public."monitor" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
   
+  return $consult_db;
+
   $resultArray = array();
   while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
     $resultArray[] = $row;
@@ -69,7 +71,7 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
   $response->setCharset('UTF-8');
   $response->headers->set('Content-Type', 'application/json');
 
-  return $OK;
+  return $response;
 });
 
 $app->run();
