@@ -211,11 +211,8 @@ range2.axisFill.zIndex = -1;
 
 hand = chart.hands.push(new am4charts.ClockHand());
 hand.value = 45;
-}); 
 
-
-window.onload = function () {
-  function newDataGraph() {
+function newDataGraph() {
   $.getJSON("/getTemperaturaData/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
@@ -226,6 +223,10 @@ window.onload = function () {
   }
 setInterval(newDataGraph, 2000);
 
+}); 
+
+window.onload = function () {
+  
 }
 </script>
 
