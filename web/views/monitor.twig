@@ -78,7 +78,7 @@
             height: 250px;
           }
           </style>
-          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> </td>
+          <td> <div id="chartdiv"></div> <br> Temperatura: <h4><p id="tempActual"></p></h4> </td>
 
           <td> <div id="chartdivLinea"></div>  </td>
         
@@ -220,8 +220,7 @@ window.onload = function () {
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
         document.getElementById("tempActual").innerHTML = contentData.temperatura;
-        temperatura = contentData.temperatura;
-        hand.value=temperatura;
+        hand.value = contentData.temperatura;
       });
   });
   }
