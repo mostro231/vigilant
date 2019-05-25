@@ -219,7 +219,7 @@ window.onload = function () {
   $.getJSON("/getTemperaturaData/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
-        document.getElementById("p1").innerHTML = contentData.temperatura;
+        document.getElementById("tempActual").innerHTML = contentData.temperatura;
         alert("lo hice");
       });
   });
