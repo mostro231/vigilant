@@ -78,7 +78,7 @@
             height: 250px;
           }
           </style>
-          <td> <div id="chartdiv"></div> <br> Temperatura: <h4><p id="tempActual"></p></h4> </td>
+          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> </td>
 
           <td> <div id="chartdivLinea"></div>  </td>
         
@@ -218,6 +218,7 @@ function newDataGraph() {
       $.each(obj, function( iData, contentData ) {
         document.getElementById("tempActual").innerHTML = contentData.temperatura;
         hand.value = contentData.temperatura;
+        alert(contentData.temperatura);
       });
   });
   }
