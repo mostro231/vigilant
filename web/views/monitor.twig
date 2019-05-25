@@ -217,7 +217,7 @@ function newDataGraph() {
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
         document.getElementById("tempActual").innerHTML = contentData.temperatura;
-        hand.showValue = contentData.temperatura;
+        hand.showValue = 20;
         alert(contentData.temperatura);
       });
   });
