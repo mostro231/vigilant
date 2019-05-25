@@ -220,6 +220,7 @@ window.onload = function () {
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
         document.getElementById("p1").innerHTML = contentData.temperatura;
+        alert("lo hice");
       });
   });
   }
