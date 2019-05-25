@@ -161,6 +161,10 @@
 
 
 <script>
+
+var temperatura;
+var hand
+
 am4core.ready(function() {
 
 // Themes begin
@@ -205,26 +209,23 @@ range2.axisFill.fillOpacity = 1;
 range2.axisFill.fill = colorSet.getIndex(4);
 range2.axisFill.zIndex = -1;
 
-var hand = chart.hands.push(new am4charts.ClockHand());
+hand = chart.hands.push(new am4charts.ClockHand());
 hand.value = 45;
 }); 
 
 
-</script>
-
-
-<script>
 window.onload = function () {
   function newDataGraph() {
   $.getJSON("/getTemperaturaData/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
         document.getElementById("tempActual").innerHTML = contentData.temperatura;
-        alert("lo hice");
+        temperatura = contentData.temperatura;
+        hand.value=temperatura;
       });
   });
   }
-setInterval(newDataGraph, 3000);
+setInterval(newDataGraph, 2000);
 
 }
 </script>
