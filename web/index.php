@@ -2,6 +2,8 @@
 date_default_timezone_set('America/Bogota');
 
 require('../vendor/autoload.php');
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -63,8 +65,6 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
   while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
     $resultArray[] = $row;
   }
-
-  return $resultArray;
 
   $jsonResult = json_encode($resultArray, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
 
