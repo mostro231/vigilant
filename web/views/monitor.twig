@@ -78,7 +78,7 @@
             height: 250px;
           }
           </style>
-          <td> <div id="chartdiv"></div> <br> Temperatura </td>
+          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> </td>
 
           <td> <div id="chartdivLinea"></div>  </td>
         
@@ -207,24 +207,26 @@ range2.axisFill.zIndex = -1;
 
 var hand = chart.hands.push(new am4charts.ClockHand());
 hand.value = 45;
-
-function newDataGraph() {
-  $.getJSON("/getTemperaturaData/1, function(result){
-    obj = $.parseJSON(JSON.stringify(result));
-    $.each(obj, function( iData, contentData ) {
-  
-        hand.value = contentData.temperatura;
-    });
-  });
-}
-
-setInterval(newDataGraph, 1000);
-
-
 }); 
+
 
 </script>
 
+
+<script>
+window.onload = function () {
+  function newDataGraph() {
+  $.getJSON("/getTemperaturaData/1", function(result){
+    obj = $.parseJSON(JSON.stringify(result));
+      $.each(obj, function( iData, contentData ) {
+        document.getElementById("p1").innerHTML = contentData.temperatura;
+      });
+  });
+  }
+setInterval(newDataGraph, 3000);
+
+}
+</script>
 
 <script>
 am4core.ready(function() {
