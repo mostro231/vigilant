@@ -57,7 +57,7 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
   $app['monolog']->addDebug('logging output.');
 
   $dbconexion=pg_connect( "host=ec2-54-221-198-156.compute-1.amazonaws.com port=5432 dbname=daclr0pc5h658k user=kzlmednsrgkxpn password=e98f8854ed2ce71f7f34dae87b70a63675e41c8e6ba689aae13927da6a974232");
-  $consult_db = pg_query($dbconexion, 'SELECT * FROM public."monitor" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
+  $consult_db = pg_query($dbconexion, 'SELECT "fecha","temperatura" FROM public."monitor" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'');
   
 
 

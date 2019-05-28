@@ -417,10 +417,6 @@ chartLinea.dataSource.parser = new am4core.JSONParser();
 // Create axes
 var categoryAxis = chartLinea.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.dataFields.category = "fecha";
-categoryAxis.renderer.minGridDistance = 50;
-categoryAxis.renderer.grid.template.location = 0.5;
-categoryAxis.startLocation = 0.5;
-categoryAxis.endLocation = 0.5;
 
 // Pre zoom
 chartLinea.events.on("datavalidated", function () {
@@ -431,18 +427,15 @@ chartLinea.events.on("datavalidated", function () {
 var valueAxis = chartLinea.yAxes.push(new am4charts.ValueAxis());
 valueAxis.baseValue = 0;
 
+
 // Create series
 var series = chartLinea.series.push(new am4charts.LineSeries());
 series.dataFields.valueY = "temperatura";
 series.dataFields.categoryX = "fecha";
+series.name = "Temperatura";
 series.strokeWidth = 2;
 series.tensionX = 0.77;
 
-var range = valueAxis.createSeriesRange(series);
-range.value = 0;
-range.endValue = 1000;
-range.contents.stroke = am4core.color("#FF0000");
-range.contents.fill = range.contents.stroke;
 
 // Add scrollbar
 var scrollbarX = new am4charts.XYChartScrollbar();
