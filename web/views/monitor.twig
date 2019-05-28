@@ -239,17 +239,9 @@ var chartLinea = am4core.create("chartdivLinea", am4charts.XYChart);
 chartLinea.paddingRight = 20;
 
 // Add data
-chart.dataSource.url = "/getTemperaturaData/4";
+chartLinea.dataSource.url = "/getTemperaturaData/4";
+chartLinea.dataSource.parser = new am4core.JSONParser();
 
-$.getJSON("/getTemperaturaData/4", function(result){
-    obj = $.parseJSON(JSON.stringify(result));
-    $.each(obj, function( iData, contentData ) {
-        element.fecha = contentData.fecha;
-        element.temperatura = contentData.temperatura;
-        tempDataGraph.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
-    });
-
-    chartLinea.data = tempDataGraph;
 
 
 /*chartLinea.data = [{
