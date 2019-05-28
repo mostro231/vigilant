@@ -62,7 +62,7 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
 
 
   $resultArray = array();
-  while ($row = pg_fetch_array($consult_db, null, PGSQL_ASSOC)) {
+  while ($row = pg_fetch_row($consult_db, null, PGSQL_ASSOC)) {
     $resultArray[] = $row;
   }
 
