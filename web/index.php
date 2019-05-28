@@ -61,7 +61,7 @@ $app->get('/getTemperaturaData/{numberOfRecords}', function($numberOfRecords) us
   
   $consult_db = pg_query($dbconextion, 'select array_to_json(array_agg(row_to_json(t)))
     from (
-      select * FROM public."monitor" ORDER BY "fecha" DESC LIMIT ' . $numberOfRecords .'
+      select * FROM monitor
     ) t');
 
   return $consult_db;
