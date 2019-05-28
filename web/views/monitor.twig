@@ -224,10 +224,6 @@ function newDataGraph() {
 setInterval(newDataGraph, 2000);
 
 }); 
-
-window.onload = function () {
-  
-}
 </script>
 
 <script>
@@ -244,6 +240,18 @@ chartLinea.paddingRight = 20;
 
 // Add data
 chart.dataSource.url = "/getTemperaturaData/4";
+
+$.getJSON("/getTemperaturaData/4", function(result){
+    obj = $.parseJSON(JSON.stringify(result));
+    $.each(obj, function( iData, contentData ) {
+        element.fecha = contentData.fecha;
+        element.temperatura = contentData.temperatura;
+        tempDataGraph.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+    });
+
+    chartLinea.data = tempDataGraph;
+
+
 /*chartLinea.data = [{
   "year": "1950",
   "value": -0.307
