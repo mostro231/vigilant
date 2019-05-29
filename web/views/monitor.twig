@@ -212,7 +212,7 @@ range2.axisFill.zIndex = -1;
 hand = chart.hands.push(new am4charts.ClockHand());
 hand.value = 45;
 
-function newDataGraph() {
+function newTempData() {
   $.getJSON("/getTemperaturaData/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
       $.each(obj, function( iData, contentData ) {
@@ -221,7 +221,7 @@ function newDataGraph() {
       });
   });
   }
-setInterval(newDataGraph, 2000);
+setInterval(newTempData, 2000);
 
 }); 
 </script>
@@ -233,9 +233,9 @@ var temps_graph = Morris.Line({
   element: 'temperatures_chart',
   data: [],
   xkey: 'fecha',
-  xLabels: 'Fecha',
+  xLabels: 'fecha',
   ykeys: ['temperatura'],
-  labels: ['Temperatura']
+  labels: ['temperatura']
 });
 
 var element = {}, temps = [], current = [];
@@ -258,7 +258,7 @@ function newDataGraph() {
 setInterval(newDataGraph, 5000);
 
 function initialDataGraph() {
-  $.getJSON("/getTemperaturaData/30", function(result){
+  $.getJSON("/getTemperaturaData/3", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
         element.fecha = contentData.fecha;
