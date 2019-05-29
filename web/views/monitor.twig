@@ -236,7 +236,7 @@ var temper_graph = Morris.Line({
   data: [],
   xkey: 'fecha',
   xLabels: 'minute',
- ykeys: 'temperatura',
+  ykey: 'temperatura',
   labels: 'temperatura'
 });
 
@@ -257,7 +257,6 @@ function newDataGraph() {
 setInterval(newDataGraph, 3000);
 
 function initialDataGraph() {
-    alert("voy a cargar");
   $.getJSON("/getTemperaturaData/10", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
