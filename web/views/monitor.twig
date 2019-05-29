@@ -231,7 +231,11 @@ setInterval(newTempData, 2000);
 <script>
 var temps_graph = Morris.Line({
   element: 'temperatures_chart',
-  data: [],
+  data: [    { year: '2008', value: 20 },
+    { year: '2009', value: 10 },
+    { year: '2010', value: 5 },
+    { year: '2011', value: 5 },
+    { year: '2012', value: 20 }],
   xkey: 'fecha',
   xLabels: 'fecha',
   ykeys: ['temperatura'],
