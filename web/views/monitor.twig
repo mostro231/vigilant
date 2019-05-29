@@ -240,7 +240,7 @@ var temper_graph = Morris.Line({
   labels: ['temperatura']
 });
 
-var temps = [], current = [];
+var temps = [], current = [], tempstart = [];
 var obj;
 
 function newDataGraph() {
@@ -256,14 +256,15 @@ function newDataGraph() {
 
 setInterval(newDataGraph, 3000);
 
-
+function initialDataGraph() {
+alert("cargaré los datos");
   $.getJSON("/getTemperaturaData/10", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
-        temps.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+        tempstart.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
     });
-    temper_graph.setData(temps);
-  });
+    temper_graph.setData(tempstart);
+  })};
 
 
 
