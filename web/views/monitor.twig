@@ -239,9 +239,21 @@ var chartLinea = am4core.create("chartdivLinea", am4charts.XYChart);
 chartLinea.paddingRight = 20;
 
 // Add data
-chartLinea.dataSource.url = "/getTemperaturaData/4";
-chartLinea.dataSource.parser = new am4core.JSONParser();
+//chartLinea.dataSource.url = "/getTemperaturaData/4";
+//chartLinea.dataSource.parser = new am4core.JSONParser();
 
+
+function initialDataGraph() {
+  $.getJSON("/getTemperaturaData/4", function(result){
+    obj = $.parseJSON(JSON.stringify(result));
+    $.each(obj, function( iData, contentData ) {
+        element.fecha = contentData.fecha;
+        element.temperatura = contentData.temperatura;
+  
+        current.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+    });
+    chartLinea.data = current;
+  })};
 
 
 /*chartLinea.data = [{
