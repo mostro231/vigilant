@@ -292,7 +292,7 @@ $.getJSON("/getTemperaturaData/10", function(result){
         consumo_sum = consumo_sum + contentData.consumo;
         i = i+1;
 
-        alert(temp_sum);
+        alert(parseInt(contentData.temperatura));
 
 
         consumo_promedio = consumo_sum / i;
