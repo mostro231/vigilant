@@ -78,7 +78,7 @@
             height: 250px;
           }
           </style>
-          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> </td>
+          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> ºC </td>
 
           <td> <div id="temperatures_chart"></div>  </td>
         
@@ -87,7 +87,7 @@
             <h3>Promedio Temperatura</h3>
             <br>
             <br>
-            <h4>20ºC</h4>
+            <h4> <p id="temp_promHTML"></p>  ºC</h4>
           </td>
         </tr>
 
@@ -98,7 +98,7 @@
             <h3>Promedio Consumo</h3>
             <br>
             <br>
-            <h4>5 Kw/h</h4>
+            <h4><p id="consumo_promHTML"></p> Kw/h</h4>
           
           </td>
         </tr>
@@ -251,6 +251,7 @@ var consumo_graph = Morris.Line({
 
 var temps = [], current = [], tempstart = [];
 var obj;
+var temp_sum, consumo_sum, temp_promedio, consumo_promedio, i;
 
 function newDataGraph() {
   $.getJSON("/getTemperaturaData/1", function(result){
@@ -260,13 +261,21 @@ function newDataGraph() {
         temps.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
+
+        i = i+1;
+
+        consumo_promedio = consumo_sum / i;
+        temp_promedio = temp_sum / i;
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
+    document.getElementById("temp_promHTML").innerHTML = temp_promedio;
+    document.getElementById("consumo_promHTML").innerHTML = consumo_promedio;
+        
   });
 }
 
-setInterval(newDataGraph, 3000);
+setInterval(newDataGraph, 10000);
 
 function initialDataGraph() {
 $.getJSON("/getTemperaturaData/10", function(result){
@@ -276,9 +285,20 @@ $.getJSON("/getTemperaturaData/10", function(result){
         temps.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
+
+        temp_sum = temp_sum + contentData.temperatura;
+        consumo_sum = consumo_sum + contentData.consumo;
+        i = i+1;
+
+
+        consumo_promedio = consumo_sum / i;
+        temp_promedio = temp_sum / i;
+
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
+    document.getElementById("temp_promHTML").innerHTML = temp_promedio;
+    document.getElementById("consumo_promHTML").innerHTML = consumo_promedio;
   });
 }
 
