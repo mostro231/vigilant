@@ -262,12 +262,13 @@ function newDataGraph() {
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
 
-        temp_sum = temp_sum + parseInt(contentData.temperatura);
-        consumo_sum = consumo_sum + parseInt(contentData.consumo);
+        temp_sum = parseInt(temp_sum) + parseInt(contentData.temperatura);
+        consumo_sum = parseInt(consumo_sum) + parseInt(contentData.consumo);
         i = i+1;
 
-        consumo_promedio = consumo_sum / i;
-        temp_promedio = temp_sum / i;
+
+        consumo_promedio = parseInt(consumo_sum) / i;
+        temp_promedio = parseInt(temp_sum) / i;
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
@@ -288,15 +289,13 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
 
-        temp_sum = temp_sum + contentData.temperatura;
-        consumo_sum = consumo_sum + contentData.consumo;
+        temp_sum = parseInt(temp_sum) + parseInt(contentData.temperatura);
+        consumo_sum = parseInt(consumo_sum) + parseInt(contentData.consumo);
         i = i+1;
 
-        alert(parseInt(contentData.temperatura));
 
-
-        consumo_promedio = consumo_sum / i;
-        temp_promedio = temp_sum / i;
+        consumo_promedio = parseInt(consumo_sum) / i;
+        temp_promedio = parseInt(temp_sum) / i;
 
     });
     temper_graph.setData(temps);
