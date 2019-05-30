@@ -240,6 +240,15 @@ var temper_graph = Morris.Line({
   labels: ['temperatura']
 });
 
+var consumo_graph = Morris.Line({
+  element: 'chartdivConsumo',
+  data: [],
+  xkey: 'fecha',
+  xLabels: 'minute',
+  ykeys: ['consumo'],
+  labels: ['consumo']
+});
+
 var temps = [], current = [], tempstart = [];
 var obj;
 
@@ -249,24 +258,32 @@ function newDataGraph() {
     $.each(obj, function( iData, contentData ) {
   
         temps.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+
+        current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
     });
     temper_graph.setData(temps);
+    consumo_graph.setData(current);
   });
 }
 
 setInterval(newDataGraph, 3000);
 
 function initialDataGraph() {
-alert("cargaré los datos");
-  $.getJSON("/getTemperaturaData/10", function(result){
+$.getJSON("/getTemperaturaData/10", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
-        tempstart.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+  
+        temps.push({ fecha: contentData.fecha, temperatura: contentData.temperatura});
+
+        current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
     });
-    temper_graph.setData(tempstart);
-  })};
+    temper_graph.setData(temps);
+    consumo_graph.setData(current);
+  });
+}
 
 initialDataGraph();
+
 
 }
 </script>
