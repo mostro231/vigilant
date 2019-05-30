@@ -288,8 +288,8 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
 
-        temp_sum = temp_sum + parseInt(contentData.temperatura);
-        consumo_sum = consumo_sum + parseInt(contentData.consumo);
+        temp_sum = temp_sum + contentData.temperatura;
+        consumo_sum = consumo_sum + contentData.consumo;
         i = i+1;
 
         alert(temp_sum);
