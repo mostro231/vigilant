@@ -78,7 +78,7 @@
             height: 250px;
           }
           </style>
-          <td> <div id="chartdiv"></div> <br> Temperatura: <p id="tempActual"></p> ºC </td>
+          <td> <div id="chartdiv"></div> <br> Temperatura: <span id="tempActual"></span> ºC</td>
 
           <td> <div id="temperatures_chart"></div>  </td>
         
@@ -87,7 +87,7 @@
             <h3>Promedio Temperatura</h3>
             <br>
             <br>
-            <h4> <p id="temp_promHTML"></p>  ºC</h4>
+            <h4> <span id="temp_promHTML"></span>  ºC</h4>
           </td>
         </tr>
 
@@ -98,7 +98,7 @@
             <h3>Promedio Consumo</h3>
             <br>
             <br>
-            <h4><p id="consumo_promHTML"></p> Kw/h</h4>
+            <h4><span id="consumo_promHTML"></span> Kw/h</h4>
           
           </td>
         </tr>
@@ -262,6 +262,8 @@ function newDataGraph() {
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
 
+        temp_sum = temp_sum + parseInt(contentData.temperatura);
+        consumo_sum = consumo_sum + parseInt(contentData.consumo);
         i = i+1;
 
         consumo_promedio = consumo_sum / i;
@@ -286,8 +288,8 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
         current.push({ fecha: contentData.fecha, consumo: contentData.consumo});
 
-        temp_sum = temp_sum + contentData.temperatura;
-        consumo_sum = consumo_sum + contentData.consumo;
+        temp_sum = temp_sum + parseInt(contentData.temperatura);
+        consumo_sum = consumo_sum + parseInt(contentData.consumo);
         i = i+1;
 
 
