@@ -109,12 +109,12 @@
 
          <h2><b>LOG DE APERTURA</b></h2>
 
-        <table style="width:70%" border="1" align="center"  >
+        <table id="tablaApertura" style="width:70%" border="1" align="center"  >
         
         <tr>
           <th style="text-align:center"> Fecha y Hora</th>
 
-          <th style="text-align:center"> Acción </th>
+          <th style="text-align:center"> Estado </th>
         </tr>
 
         <tr>
@@ -306,6 +306,27 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
 initialDataGraph();
 
+var table = document.getElementById("tablaApertura");
+
+function updateTable() {
+  $.getJSON("/getlogs/1", function(result){
+    obj = $.parseJSON(JSON.stringify(result));
+    $.each(obj, function( iData, contentData ) {
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = contentData.fecha;
+        cell2.innerHTML = contentData.estado; 
+    });
+    temper_graph.setData(temps);
+    consumo_graph.setData(current);
+    document.getElementById("temp_promHTML").innerHTML = Math.round(temp_promedio);
+    document.getElementById("consumo_promHTML").innerHTML = Math.round(consumo_promedio);
+        
+  });
+}
+setInterval(newDataGraph, 10000); 
+  
 
 }
 </script>
