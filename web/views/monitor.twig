@@ -327,7 +327,6 @@ function updateTable() {
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
         if (idUltimo != contentData.id){
-          alert(idUltimo);
           var table = document.getElementById("tablaApertura");
           var row = table.insertRow(1);
           var cell1 = row.insertCell(0);
