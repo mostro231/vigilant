@@ -272,8 +272,8 @@ function newDataGraph() {
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
-    document.getElementById("temp_promHTML").innerHTML = temp_promedio;
-    document.getElementById("consumo_promHTML").innerHTML = consumo_promedio;
+    document.getElementById("temp_promHTML").innerHTML = Math.round(temp_promedio);
+    document.getElementById("consumo_promHTML").innerHTML = Math.round(consumo_promedio);
         
   });
 }
@@ -293,16 +293,14 @@ $.getJSON("/getTemperaturaData/10", function(result){
         consumo_sum = parseInt(consumo_sum) + parseInt(contentData.consumo);
         i = i+1;
 
-        alert(temp_sum);
-
         consumo_promedio = parseInt(consumo_sum) / i;
         temp_promedio = parseInt(temp_sum) / i;
 
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
-    document.getElementById("temp_promHTML").innerHTML = temp_promedio;
-    document.getElementById("consumo_promHTML").innerHTML = consumo_promedio;
+    document.getElementById("temp_promHTML").innerHTML = Math.round(temp_promedio);
+    document.getElementById("consumo_promHTML").innerHTML = Math.round(consumo_promedio);
   });
 }
 
