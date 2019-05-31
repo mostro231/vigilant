@@ -306,12 +306,13 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
 initialDataGraph();
 
-var table = document.getElementById("tablaApertura");
+
 
 function updateTable() {
   $.getJSON("/getlogs/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
+        var table = document.getElementById("tablaApertura");
         var row = table.insertRow(1);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -325,7 +326,7 @@ function updateTable() {
         
   });
 }
-setInterval(newDataGraph, 10000); 
+setInterval(updateTable, 10000); 
   
 
 }
