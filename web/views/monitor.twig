@@ -117,18 +117,6 @@
           <th style="text-align:center"> Estado </th>
         </tr>
 
-        <tr>
-          <td> 22 de mayo de 2019, 20:20 </td>
-          <td> APERTURA  </td>
-        </tr>
-        <tr>
-          <td> 22 de mayo de 2019, 20:20 </td>
-          <td> APERTURA  </td>
-        </tr>
-        <tr>
-          <td> 22 de mayo de 2019, 20:20 </td>
-          <td> APERTURA  </td>
-        </tr>
 
 
          </table>
@@ -337,6 +325,7 @@ function updateTable() {
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
         if (idUltimo != contentData.id){
+          alert(idUltimo);
           var table = document.getElementById("tablaApertura");
           var row = table.insertRow(1);
           var cell1 = row.insertCell(0);
