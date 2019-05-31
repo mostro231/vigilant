@@ -308,7 +308,9 @@ function initialTable() {
         var cell2 = row.insertCell(1);
         cell1.innerHTML = contentData.fecha;
         cell2.innerHTML = contentData.estado; 
-        idUltimo = contentData.id;
+        if(idUltimo==0){
+          idUltimo = contentData.id;
+        }
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
