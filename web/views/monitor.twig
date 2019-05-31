@@ -306,6 +306,10 @@ $.getJSON("/getTemperaturaData/10", function(result){
 
 initialDataGraph();
 
+
+var idUltimo=0;
+
+
 function initialTable() {
   $.getJSON("/getlogs/4", function(result){
     obj = $.parseJSON(JSON.stringify(result));
@@ -316,6 +320,7 @@ function initialTable() {
         var cell2 = row.insertCell(1);
         cell1.innerHTML = contentData.fecha;
         cell2.innerHTML = contentData.estado; 
+        idUltimo = contentData.id;
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
@@ -325,16 +330,20 @@ function initialTable() {
   });
 }
 
+
+
 function updateTable() {
   $.getJSON("/getlogs/1", function(result){
     obj = $.parseJSON(JSON.stringify(result));
     $.each(obj, function( iData, contentData ) {
-        var table = document.getElementById("tablaApertura");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        cell1.innerHTML = contentData.fecha;
-        cell2.innerHTML = contentData.estado; 
+        if (idUltimo != contentData.id){
+          var table = document.getElementById("tablaApertura");
+          var row = table.insertRow(1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          cell1.innerHTML = contentData.fecha;
+          cell2.innerHTML = contentData.estado; 
+        }
     });
     temper_graph.setData(temps);
     consumo_graph.setData(current);
