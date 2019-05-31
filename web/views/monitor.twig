@@ -251,7 +251,7 @@ var consumo_graph = Morris.Line({
 
 var temps = [], current = [], tempstart = [];
 var obj;
-var temp_sum, consumo_sum, temp_promedio, consumo_promedio, i;
+var temp_sum=0, consumo_sum=0, temp_promedio=0, consumo_promedio=0, i=0;
 
 function newDataGraph() {
   $.getJSON("/getTemperaturaData/1", function(result){
